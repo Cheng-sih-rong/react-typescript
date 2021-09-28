@@ -1,11 +1,16 @@
-import React from 'react';
+import React,{useState} from 'react';
 import './NormalModal.css';
-import Button from '../component/Button';
+
 
 function Modal() {
+  const [count,setCount] = useState(1)
   return (
     <div className="App">
-      <div className="contanier"> <Button /></div>
+      <div className="contanier center"> 
+        <h2>年度成就</h2>
+        <p>{count}</p>
+        <button onClick={()=>count< 5?setCount(count+1):setCount(1)}> Next </button>
+      </div>
     </div>
   );
 }

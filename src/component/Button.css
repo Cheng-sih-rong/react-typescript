@@ -2,4 +2,18 @@ button{
     padding-inline: 20px ;
     padding-block: 10px ;
     border: none;
+    border-radius: 5px;
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    cursor: pointer;
+}
+button:hover{
+    background-color:darkgray;
+}
+h2{
+    color: white;
+}
+p{
+    color: white;
 }
