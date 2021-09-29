@@ -4,7 +4,7 @@ import './NormalModal.css';
 
 function Modal() {
   
-  const [count,setCount] = useState(1)
+  const [count,setCount]:[number,any] = useState(1)
   const title:string='年度成就'
 
   return (
