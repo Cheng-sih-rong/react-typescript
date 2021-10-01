@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import './Test.css';
+import './Test.scss';
 
 
 function Test() {
@@ -12,8 +12,8 @@ function Test() {
 
 
   return (
-    <div >
-      <button onClick={change}>
+    <div className="first">
+      <button className="second"  onClick={change}>
       Press Me
     </button>
       <p ref={refText}>

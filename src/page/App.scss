@@ -2,7 +2,25 @@
   display: flex;
   justify-content: center;
   padding: 20px;
+  flex-basis:30px;
  }
+.wrap{
+  flex-direction: column;
+}
+.flex{
+  display: flex;
+  justify-content: space-around;
+  width: 200px;
+  flex-basis: 10px;
+}
+.marign-right-10{
+  margin-right: 10px;
+}
+
+.margin-bottom-10{
+  margin-bottom: 10px;
+}
+ 
 
 
 /*.App-logo {

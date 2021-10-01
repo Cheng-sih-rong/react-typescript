@@ -1,11 +1,9 @@
 button{
     padding-inline: 20px ;
     padding-block: 10px ;
+    width: max-content;
     border: none;
     border-radius: 5px;
-    position: absolute;
-    bottom: 30px;
-    right: 30px;
     cursor: pointer;
 }
 button:hover{
