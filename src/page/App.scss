@@ -9,9 +9,9 @@
 }
 .flex{
   display: flex;
-  justify-content: space-around;
-  width: 200px;
-  flex-basis: 10px;
+  justify-content: flex-start;
+  width: 1000px;
+  gap: 30px;
 }
 .marign-right-10{
   margin-right: 10px;
@@ -21,7 +21,19 @@
   margin-bottom: 10px;
 }
  
+.active{
+  color: red;
+}
 
+.thick{
+  display: inline-block;
+  font-weight: bolder;
+  color: rgb(125, 18, 100);
+}
+
+// .nav{
+//   background-color: red;
+// }
 
 /*.App-logo {
   height: 40vmin;
