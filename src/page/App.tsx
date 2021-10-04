@@ -7,6 +7,7 @@ import './App.scss';
 // import Test from '../contanier/Test/Test';
 import One from '../contanier/One/One';
 import Two from '../contanier/Two/Two';
+import Location from '../contanier/Location/Location';
 import Button from '../component/Button';
 function Home(){
   return(
@@ -21,6 +22,7 @@ const activeStyle:object = {
 
 function App() {
  
+  // console.log(useLocation())
   const [path,setPath]=useState(1)
 
   const goPath =useHistory();
@@ -55,6 +57,11 @@ function App() {
       <NavLink to="/1" activeClassName="thick">路由1:activeClassName</NavLink>
       <NavLink to="/2" activeStyle={activeStyle}>路由2:activeStyle</NavLink>
       <NavLink to="/2" isActive={dontGo}>路由2:isActive</NavLink>
+      <NavLink to={{
+		            pathname: "/location", // 指定要轉向的新path
+                 search: "?sort=name",　// 搜尋的表達形式
+                 hash: "#the-hash", // 將hash放到url上
+                state: { text: "state裡的文字" }}}>Location</NavLink>
       
 
       </div>
@@ -73,6 +80,7 @@ function App() {
           <Route  path='/home' component={Home} />
           <Route  path='/1' component={One} />
           <Route  path='/2' component={Two} />  
+          <Route  path='/location' component={Location} />  
           
           
       </Switch>
