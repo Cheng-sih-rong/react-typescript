@@ -1,17 +1,32 @@
+html{
+  background-color: rgb(212, 201, 186);
+}
+
+
 .App {
-  display: flex;
-  justify-content: center;
-  padding: 20px;
-  flex-basis:30px;
+  width: 100vw;
+  margin-inline:auto ;
  }
+ .container{
+   margin-inline: auto;
+   width: 700px;
+
+   .list-wrapper{
+    margin-top: 30px;
+  }
+ }
+ 
+.center{
+  align-items: center;
+}
+
+
+
 .wrap{
   flex-direction: column;
 }
 .flex{
   display: flex;
-  justify-content: flex-start;
-  width: 1000px;
-  gap: 30px;
 }
 .marign-right-10{
   margin-right: 10px;
