@@ -1,111 +1,76 @@
-import React,{useState} from 'react';
-import {useLocation}  from 'react-router-dom';
+import React, { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import './List.scss';
 import Button from '../../component/Botton/Button';
-const todoList =[{key:1,content:'買牛奶',done:false},{key:2,content:'繳費',done:true}]
-
-function doneList(list:any){
-    return list.filter((item:any)=>{ 
-      return  item.done
-    })
-}
-function undoList(list:any){
-    return list.filter((item:any)=>{ 
-      return  !item.done
-    })
-}
-// const todoList =[]
 
 
+function List(prop: any) {
+
+  const location = useLocation()
+  const path = location.pathname
+  const showList = prop.show
+  console.log(showList)
+  const [change, setChange] = useState(true)
+  // const [aaa, setAaa] = useState(showList)
+  var getValList = [...showList]
 
 
+  const deleteItem = function (index: any) {
+    const list = showList.map((item: any) => item['key'] === index ? item['delete'] = true : item['delete'] = false)
+    setChange(!change)
+    getValList = list
+    // setAaa(getValList)
+    console.log(change)
 
-
-  // (
-  //   <div>
-  //     <div className="flex item-wrap">
-  //       <p>{prop.contnet}</p>
-  //       <div className="flex gap">
-  //           <Button content="刪除" type="detele" />
-  //            <Button content="完成" />
-  //       </div>
-         
-  //     </div>
-  //     <hr/>
-  //   </div>
-  // )
-
-
-function List() {
-
-//typescript
-// interface item {
-//   key: number;
-//   content: string;
-//   done:boolean;
-
-// } 
-const location  = useLocation()
-
-  const [todoList,setTodoList]=useState([{key:1,content:'買牛奶',done:false},{key:2,content:'繳費',done:true}])  
-
-  function getItem(value:string){
-    const list = [...todoList]
-    // const aa:item[]= {
-    //   key:parseInt(Date.now()),
-    //   content:value,done:false}
-    // list.push(aa)
-    setTodoList(list)
-  
   }
 
-  const deleteItem =function(index:any){
-    console.log('dfdsdfdsf')
-    const list = todoList.filter((item)=>{
-          return item['key'] !== index
-    })
-
-    setTodoList(list)
+  const doneItem = function (index: any) {
+    const list: any = showList.map((item: any) => item['key'] === index ? item['done'] = true : item['done'] = false)
+    setChange(!change)
+    console.log(change)
+    // setAaa(list)
+    getValList = list
   }
 
-  const doneItem =function(index:any){
-
-    const list:any = todoList.map((item:any)=>{
-          if(item['key']===index) item['done']= true
-    })
-    setTodoList(list)
+  const btnDisplay = {
+    display: path === '/done' ? 'none' : 'flex'
   }
-  
-  const itemLoop= function(list:Array<any>,){
 
-    return list.map((item)=>{
-       return (<div key={item.key}>
-       <div className="flex item-wrap">
-         <p>{item.content}</p>
-         <div className="flex center gap">
-             <div onClick={()=>deleteItem(item.key)}><Button content="刪除" type="detele"  /></div>
-            <div onClick={()=>doneItem(item.key)}><Button content="完成" /></div>
-         </div>
-          
-       </div>
-       <hr/>
-     </div>)
-     })}
+  const title = path === '/undo' ? '待辦' : '完成'
 
-  const changeFun =location.pathname ==='/undo'?undoList(todoList):doneList(todoList)
-     
- console.log(changeFun)
+
+  //項目
+
+  const itemLoop = function (list: Array<any>,) {
+
+    return list.map((item) => {
+      return (<div key={item.key}>
+        <div className="flex item-wrap">
+          {console.log(change, 'render')}
+          <p>{item.content}</p>
+          <div className="flex center gap">
+            <div onClick={() => deleteItem(item.key)}><Button content="刪除" type="detele" /></div>
+            <div style={btnDisplay} onClick={() => doneItem(item.key)}><Button content="完成" /></div>
+          </div>
+
+        </div>
+        <hr />
+      </div>)
+    })
+  }
+
+
   return (
     <div className="content-edit wrap">
       <div className="title">
-          <h3>{location.pathname ==='/undo'?'待辦項目':'完成項目'}</h3>
-          {`(${changeFun.length>0?`你有${changeFun.length}個未完成項目`:'目前無待辦項目'})`}
+        <h3>{title + '項目'}</h3>
+        {`(${getValList.length > 0 ? `你有${getValList.length}個${title}項目` : `目前無${title}項目`})`}
       </div>
       <div className="item">
-      {itemLoop(changeFun)}
-     </div>
-    
-  </div>
+        {itemLoop(getValList)}
+      </div>
+
+    </div>
   );
 }
 
