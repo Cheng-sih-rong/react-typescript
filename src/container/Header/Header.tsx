@@ -1,5 +1,5 @@
 import React from 'react';
-import {NavLink}  from 'react-router-dom';
+import {NavLink,Redirect}  from 'react-router-dom';
 import './Header.scss';
 
 
@@ -12,6 +12,7 @@ function Header() {
     <ul className="flex nav gap">
       <NavLink to="/undo" >待辦項目</NavLink>
       <NavLink to="/done" >完成項目</NavLink>
+      <Redirect to="/undo" />
     </ul>  
       
   
